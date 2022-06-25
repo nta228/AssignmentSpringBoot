@@ -1,5 +1,7 @@
 package com.example.assignmentspringboot.entity;
 
+import com.example.assignmentspringboot.entity.myEnum.StreetStatus;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -18,8 +20,14 @@ public class Street {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    private String district;
     private LocalDate foundingDate;
     private String description;
-    private int status;
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name="district_id", nullable = false)
+    private District district;
+    @Column(updatable = false, insertable = false)
+    private Integer district_id;
+    @Enumerated(EnumType.ORDINAL)
+    private StreetStatus status;
 }
