@@ -2,7 +2,7 @@ package com.example.assignmentspringboot.entity;
 
 import lombok.*;
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 
 @Getter
@@ -19,7 +19,7 @@ public class Street {
     private int id;
     private String name;
     private String district;
-    private Date foundingDate;
+    private LocalDate foundingDate;
     private String description;
     private int status;
 }
